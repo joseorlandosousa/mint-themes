@@ -1,0 +1,201 @@
+// 
+
+// variables
+$bordered: false !default;
+
+// toolbar
+$toolbar-height: 48px;
+
+/*
+  Colors
+  definition of base brand colors
+*/
+
+$white: #FFFFFF !default;
+$black: #000000 !default;
+
+// Linux Mint Green
+$lm-green: (
+    50: #f0f7e8,
+    100: #dbecc7,
+    200: #c3dfa1,
+    300: #aad27b,
+    400: #98c85f,
+    500: #86BE43,
+    600: #7eb83d,
+    700: #73af34,
+    800: #69a72c,
+    900: #56991e
+) !default;
+
+// Linux Mint Dark
+$lm-dark: (
+    50: #e6e6e6,
+    100: #c0c0c0,
+    200: #979797,
+    300: #6d6d6d,
+    400: #4d4d4d,
+    500: #2e2e2e,
+    600: #292929,
+    700: #232323,
+    800: #1d1d1d,
+    900: #121212
+) !default;
+
+$lm-grey: (
+    50: #fbfbfb,
+    100: #f6f6f6,
+    200: #f0f0f0,
+    300: #eaeaea,
+    400: #e6e6e6,
+    500: #e1e1e1,
+    600: #dddddd,
+    700: #d9d9d9,
+    800: #d5d5d5,
+    900: #CDCDCD
+) !default;
+
+$lm-blue: (
+    50: #E2F2FA,
+    100: #b6def2,
+    200: #86c8e9,
+    300: #56b2e0,
+    400: #31a2da,
+    500: #0d91d3,
+    600: #0b89ce,
+    700: #097ec8,
+    800: #0774c2,
+    900: #0362b7
+) !default;
+
+$lm-yellow: (
+    50: #fff5e0,
+    100: #ffe7b3,
+    200: #ffd780,
+    300: #ffc64d,
+    400: #ffba26,
+    500: #ffae00,
+    600: #ffa700,
+    700: #ff9d00,
+    800: #ff9400,
+    900: #ff8400
+) !default;
+
+
+$lm-red: (
+    50: #fae5e7,
+    100: #f3bfc4,
+    200: #ec949d,
+    300: #e46975,
+    400: #de4858,
+    500: #d8283a,
+    600: #d42434,
+    700: #ce1e2c,
+    800: #c81825,
+    900: #bf0f18
+) !default;
+
+// Spacings
+$lm-spacing: (
+  "xs": 3px,
+  "sm": 6px,
+  "md": 12px,
+  "lg": 24px,
+  "xl": 32px,
+  "xxl": 64px,
+  "xxxl": 96px
+) !default;
+
+
+// Radius
+$lm-radius: (
+  "xs": 3px,
+  "sm": 6px,
+  "md": 12px,
+  "lg": 24px,
+  "xl": 32px,
+  "xxl": 64px,
+  "xxxl": 96px
+) !default;
+
+
+// Fontt
+$font-family-default: 'Ubutu Regular';
+
+/**
+THEMES CONFIGS
+**/
+
+// Light
+$lm-themme-light: (
+  "base-color":     $white,
+  "bg-color":       map-get($lm-grey, 100),
+  "toolbar_btn_bg": $white,
+  "text_color":     map-get($lm-dark, 500),
+  "border-color":   map-get($lm-grey, 400),
+
+  "primary":        map-get($lm-green, 800),
+
+  // states
+  "active_bg":      map-get($lm-themme-light, 'primary'),
+  "active_color":   $white,
+  "selected_bg":    map-get($lm-dark,  300),
+  "selected_color": $white,
+  "hover_bg":       map-get($lm-grey, 200),
+  "hover_color":    map-get($lm-dark, 500),
+
+);
+
+// Dark
+$lm-themme-dark: (
+  "base-color":     map-get($lm-dark, 700),
+  "bg-color":       map-get($lm-dark, 500),
+  "toolbar_btn_bg": map-get($lm-dark, 400),
+  "text_color":     map-get($lm-grey, 400),
+  "border-color":   map-get($lm-dark, 700),
+
+  "primary":        map-get($lm-green, 500),
+
+  // states
+  "active_bg":      map-get($lm-themme-dark, 'primary'),
+  "active_color":   map-get($lm-dark, 500),
+  "selected_bg":    map-get($lm-dark,  900),
+  "selected_color": $white,
+  "hover_bg":       map-get($lm-dark, 600),
+  "hover_color":    map-get($lm-grey, 400),
+
+);
+
+
+
+
+// FROM BOOTSTRAP
+/*!
+ * Bootstrap v5.0.0-alpha1 (https://getbootstrap.com/)
+ * Copyright 2011-2020 The Bootstrap Authors
+ * Copyright 2011-2020 Twitter, Inc.
+ * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
+ */
+
+// The contrast ratio to reach against white, to determine if color changes from "light" to "dark". Acceptable values for WCAG 2.0 are 3, 4.5 and 7.
+// See https://www.w3.org/TR/WCAG20/#visual-audio-contrast-contrast
+$min-contrast-ratio:   3 !default;
+
+// Customize the light and dark text colors for use in our color contrast function.
+$color-contrast-dark:      map-get($lm-dark, 500) !default;
+$color-contrast-light:     $white !default;
+// Color contrast
+$yiq-contrasted-threshold:  180 !default;
+@function color-contrast($color, $dark: $color-contrast-dark, $light: $color-contrast-light) {
+  $r: red($color);
+  $g: green($color);
+  $b: blue($color);
+
+  $yiq: (($r * 299) + ($g * 587) + ($b * 114)) / 1000;
+
+  @if ($yiq >= $yiq-contrasted-threshold) {
+    @return $dark;
+  } @else {
+    @return $light;
+  }
+}
