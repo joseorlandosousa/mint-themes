@@ -774,7 +774,7 @@ combobox arrow {
 
 toolbar, .inline-toolbar {
   -GtkWidget-window-dragging: true;
-  padding: 3px;
+  padding: 3px 6px;
   background-color: #2e2e2e; }
   toolbar separator, .inline-toolbar separator {
     background: none; }
@@ -818,9 +818,8 @@ toolbar, .inline-toolbar {
 .primary-toolbar toolbar, .primary-toolbar .inline-toolbar,
 .primary-toolbar:not(.libreoffice-toolbar) {
   color: #e9e4e4;
-  background-color: #2e2e2e;
   box-shadow: none;
-  border-bottom: 1px solud #292929; }
+  border-bottom: 1px solid #292929; }
 
 .inline-toolbar {
   background-color: #262626;
@@ -1090,7 +1089,7 @@ headerbar .linked:not(.vertical).path-bar > button {
   outline-color: rgba(233, 228, 228, 0.3);
   outline-offset: -3px;
   background-color: #4d4d4d;
-  border-color: #292929; }
+  border-color: transparent; }
   .primary-toolbar toolbar .linked:not(.vertical):not(.path-bar).stack-switcher > button:hover, .primary-toolbar .inline-toolbar .linked:not(.vertical):not(.path-bar).stack-switcher > button:hover, .primary-toolbar .linked:not(.vertical):not(.path-bar).stack-switcher > button:hover, headerbar .linked:not(.vertical):not(.path-bar).stack-switcher > button:hover,
   .primary-toolbar toolbar .linked:not(.vertical).path-bar > button:hover,
   .primary-toolbar .inline-toolbar .linked:not(.vertical).path-bar > button:hover,
@@ -1327,6 +1326,12 @@ headerbar .linked:not(.vertical).path-bar > button {
 .path-bar button image {
   padding-left: 4px;
   padding-right: 4px; }
+
+GtkTreeView GtkCellAreaBox:nth-child(odd) {
+  background-color: #FF00FF; }
+
+GtkTreeView GtkCellAreaBox:nth-child(even) {
+  background-color: #00FFFF; }
 
 treeview.view {
   border-left-color: rgba(230, 230, 230, 0.15);
@@ -2478,8 +2483,11 @@ calendar {
 .dialog-vbox .dialog-action-box {
   padding: 6px; }
 
-.dialog-vbox box > image:not(.sidebar-icon) {
+.dialog-vbox box.horizontal > image:not(.sidebar-icon) {
   color: #ff9400; }
+
+.dialog-vbox box > image.sidebar-icon {
+  opacity: .4; }
 
 .message-dialog {
   -GtkDialog-button-spacing: 0; }
@@ -3043,7 +3051,7 @@ GtkHTML {
   background-color: #292929;
   color: #e6e6e6; }
   GtkHTML:active {
-    border-color: selected_borders_color;
+    border-color: #86BE43;
     color: #2e2e2e;
     background-color: #86BE43; }
 
@@ -3055,8 +3063,11 @@ SushiFontWidget {
 
 vte-terminal.terminal-screen {
   -TerminalScreen-background-darkness: 0.97;
-  background-color: #3f3f3f;
+  background-color: #2e2e2e;
   color: #fff; }
+
+.terminal-screen {
+  padding: 12px; }
 
 terminal-screen-container,
 terminal-screen-container scrollbar:not(slider) {
@@ -3078,7 +3089,7 @@ TerminalWindow .notebook .active-page .button:active, TerminalWindow .notebook .
 
 vte-terminal {
   -TerminalScreen-background-darkness: 0.97;
-  background-color: #3f3f3f;
+  background-color: #2e2e2e;
   color: #fff; }
 
 .nautilus-canvas-item {
@@ -3179,7 +3190,7 @@ filechooser placessidebar.sidebar list {
 
 .nautilus-window.maximized placessidebar.sidebar,
 filechooser.maximized placessidebar.sidebar {
-  background-color: #292929; }
+  background-color: rgba(41, 41, 41, 0.8); }
 
 NautilusQueryEditor .search-bar.toolbar {
   padding: 5px;
@@ -3209,6 +3220,7 @@ NautilusListView .view, NautilusListView iconview {
   border-bottom: 1px solid #292929; }
 
 .nemo-window {
+  background-color: #2e2e2e;
   /* This is to keep the separator next to the sidebar dark so we don't see a gap
      between it and the trash bar */ }
   .nemo-window .nemo-window-pane widget.entry {
@@ -3229,13 +3241,21 @@ NautilusListView .view, NautilusListView iconview {
   .nemo-window .nemo-places-sidebar.frame {
     border-width: 0; }
   .nemo-window .sidebar {
-    color: #e6e6e6;
-    background-color: #292929; }
+    padding: 6px 0;
+    color: #e6e6e6; }
     .nemo-window .sidebar .frame {
       border: none; }
+    .nemo-window .sidebar image {
+      opacity: .4; }
     .nemo-window .sidebar .view, .nemo-window .sidebar iconview, .nemo-window .sidebar row {
       background-color: transparent;
       color: #e6e6e6; }
+      .nemo-window .sidebar .view.cel:first-child, .nemo-window .sidebar iconview.cel:first-child, .nemo-window .sidebar row.cel:first-child {
+        border-top-left-radius: 6px;
+        border-bottom-left-radius: 6px; }
+      .nemo-window .sidebar .view.cel:last-child, .nemo-window .sidebar iconview.cel:last-child, .nemo-window .sidebar row.cel:last-child {
+        border-top-right-radius: 6px;
+        border-bottom-right-radius: 6px; }
       .nemo-window .sidebar .view.cell:selected, .nemo-window .sidebar iconview.cell:selected, .nemo-window .sidebar row.cell:selected {
         background-color: #86BE43;
         color: #2e2e2e; }

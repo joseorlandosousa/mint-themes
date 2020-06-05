@@ -131,10 +131,10 @@ THEMES CONFIGS
 $lm-theme-light: (
   "base_color":     $white,
   "bg_color":       map-get($lm-grey, 100),
-  "toolbar_btn_bg": $white,
+  "toolbar_btn_bg": map-get($lm-grey, 300),
   "text_color":     map-get($lm-dark, 500),
   "border_color":   map-get($lm-grey, 500),
-  "sidebar_bg":     map-get($lm-grey, 300),
+  "sidebar_bg":     map-get($lm-grey, 400),
 
   "primary":        map-get($lm-green, 800),
 

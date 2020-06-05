@@ -41,7 +41,7 @@ GtkHTML {
   color: $text_color;
 
   &:active {
-    border-color: selected_borders_color;
+    border-color: $selected_borders_color;
     color: $selected_fg_color;
     background-color: $selected_bg_color;
   }
@@ -69,8 +69,13 @@ SushiFontWidget {
 //
 vte-terminal.terminal-screen {
   -TerminalScreen-background-darkness: 0.97;
-  background-color: #3f3f3f;
+  background-color: map-get($lm-theme-dark, 'bg_color');
   color: #fff;
+
+}
+
+.terminal-screen {
+  padding: map-get($lm-spacing, 'md');
 }
 
 terminal-screen-container,
@@ -105,7 +110,7 @@ TerminalWindow {
 //
 vte-terminal {
   -TerminalScreen-background-darkness: 0.97;
-  background-color: #3f3f3f;
+  background-color: map-get($lm-theme-dark, 'bg_color');
   color: #fff;
 }
 
@@ -198,7 +203,7 @@ filechooser {
     scrollbar { @extend %dark_sidebar_scrollbar }
   }
 
-  &.maximized placessidebar.sidebar { background-color: opacify($dark_sidebar_bg, 1); }
+  &.maximized placessidebar.sidebar { background-color: rgba($dark_sidebar_bg, .8); }
 }
 
 NautilusQueryEditor .search-bar.toolbar {
@@ -242,9 +247,9 @@ NautilusListView .view { border-bottom: 1px solid $borders_color; }
 // Nemo
 //
 .nemo-desktop.nemo-canvas-item { @extend %nautilus_canvas_item; }
-
+  
 .nemo-window {
-
+  background-color: $bg_color;
   .nemo-window-pane widget.entry {
     border: 1px solid;
     border-radius: 3px;
@@ -271,14 +276,29 @@ NautilusListView .view { border-bottom: 1px solid $borders_color; }
   .nemo-places-sidebar.frame { border-width: 0; }
 
   .sidebar {
+    padding: map-get($lm-spacing, 'sm') 0;
     color: $dark_sidebar_fg;
-    background-color: $dark_sidebar_bg;
 
     .frame { border: none; }
+
+    image {
+      opacity: .4;
+    }
 
     .view, row {
       background-color: transparent;
       color: $dark_sidebar_fg;
+
+      &.cel {
+        &:first-child {
+          border-top-left-radius: map-get($lm-radius, 'sm');
+          border-bottom-left-radius: map-get($lm-radius, 'sm');
+        }
+        &:last-child {
+          border-top-right-radius: map-get($lm-radius, 'sm');
+          border-bottom-right-radius: map-get($lm-radius, 'sm');
+        }
+      }
 
       &.cell:selected {
         background-color: $selected_bg_color;

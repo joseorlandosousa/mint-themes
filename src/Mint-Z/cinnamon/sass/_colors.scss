@@ -1,33 +1,60 @@
 // When color definition differs for dark and light variant,
 // it gets @if ed depending on $variant
 
-$base_color: if($variant =='light', #ffffff, #404040);
-$text_color: if($variant == 'light', #202020, #D3D3D3);
-$bg_color: if($variant =='light', #F0F0F0, #2f2f2f);
-$fg_color: if($variant =='light', #202020, #f0f0f0);
+$base_color: if($variant =='light', map-get($lm-theme-light, 'base_color'), map-get($lm-theme-dark, 'base_color'));
+$text_color: if($variant == 'light', map-get($lm-theme-light, 'text_color'), map-get($lm-theme-dark, 'text_color'));
+$bg_color: if($variant =='light', map-get($lm-theme-light, 'bg_color'), map-get($lm-theme-dark, 'bg_color'));
+$fg_color: if($variant =='light', map-get($lm-theme-light, 'text_color'), map-get($lm-theme-dark, 'text_color'));
 
-$selected_fg_color: #ffffff;
-$selected_bg_color: if($variant == 'light', #92b372, #92b372);
+$selected_fg_color: if($variant == 'light', map-get($lm-theme-light, 'active_color'), map-get($lm-theme-dark, 'active_color'));
+$selected_bg_color: if($variant == 'light', map-get($lm-theme-light, 'active_bg'), map-get($lm-theme-dark, 'active_bg'));
+$selected_borders_color: $selected_bg_color;
+$borders_color: if($variant =='light', map-get($lm-theme-light, 'border_color'), map-get($lm-theme-dark, 'border_color'));
+$separator_color: if($variant == 'light', map-get($lm-theme-light, 'border_color'), map-get($lm-theme-dark, 'border_color'));
 
-$borders_color: if($variant =='light', darken($bg_color,9%), darken($bg_color,6%));
+$link_color: map-get($lm-blue, 500);
+$link_visited_color:  map-get($lm-blue, 700);
 
-$separator_color: if($variant == 'light', #cfcfcf, darken($bg_color, 6%));
 
-$link_color: if($variant == 'light', darken($selected_bg_color,10%),
-                                     lighten($selected_bg_color,20%));
+$header_bg: $bg_color;
+@if $variant=='light' { $header_bg: $bg_color; }
+@if $variant=='dark' { $header_bg: map-get($lm-theme-dark, 'bg_color'); }
 
-$warning_color: #F27835;
-$error_color: #FC4138;
-$destructive_color: #F04A50;
+$header_fg: if($variant == 'light', $text_color, saturate(transparentize($fg_color, 0.0), 10%));
+
+$header_entry_border: if($variant == 'dark', transparentize(darken($header_bg, 12%), 0.6), transparentize($header_fg, 0.7));
+
+$header_button_bg: if($variant == 'dark',map-get($lm-theme-dark, 'toolbar_btn_bg'), map-get($lm-theme-light, 'toolbar_btn_bg'));
+$header_button_border: if($variant == 'dark', map-get($lm-theme-dark, 'border_color'), $borders_color);
+
+
+// sidebar
+$dark_sidebar_bg: if($variant == 'light', map-get($lm-theme-light, 'sidebar_bg'), map-get($lm-theme-dark, 'sidebar_bg'));
+$dark_sidebar_fg: $text_color;
+$dark_sidebar_border: if($variant == 'light', $dark_sidebar_bg, $dark_sidebar_bg);
+
+
+$selection_mode_bg: $selected_bg_color;
+$selection_mode_fg: $selected_fg_color;
+$warning_color: map-get($lm-yellow, 500);
+$warning_fg_color: $text_color;
+$error_color: map-get($lm-red, 500);
+$error_fg_color: white;
+$success_color: map-get($lm-green, 500);
+$destructive_color: map-get($lm-red, 500);
+$suggested_color: $selected_bg_color;
+$question_color: map-get($lm-blue, 500);
+
 
 $insensitive_fg_color: if($variant == 'light', transparentize($fg_color, 0.45), transparentize($fg_color, 0.55));
 
-$tooltip_bg_color: #fbeaa0;
-$tooltip_fg_color: #4a4a4a;
-$tooltip_border_color: #d0d0d0;
+// tooltip
+$tooltip_bg_color:  map-get($lm-theme-dark, 'bg_color');
+$tooltip_fg_color: map-get($lm-theme-dark, 'text_color');
+$tooltip_border_color: map-get($lm-theme-dark, 'border_color');
 
-$osd_fg_color: #c3c3c3;
-$osd_bg_color: #353535;
+$osd_fg_color: $dark_sidebar_fg;
+$osd_bg_color: $dark_sidebar_bg;
 
 $osd_button_bg: transparentize(lighten($osd_bg_color, 22%), 0.6);
 $osd_button_border: transparentize(darken($osd_bg_color, 20%), 0.6);
@@ -40,8 +67,9 @@ $osd_insensitive_fg_color: mix($osd_fg_color, opacify($osd_bg_color, 1), 30%);
 $panel_bg: #2f2f2f;
 $panel_fg: #f0f0f0;
 
-$entry_bg: if($variant=='light', $base_color, lighten($base_color, 0%));
-$entry_border: if($variant == 'light', #cfd6e6, darken($borders_color, 0%));
 
-$button_bg: if($variant == 'light', lighten($bg_color, 2%), lighten($base_color, 2%));
-$button_border: $entry_border;
+$entry_bg: if($variant=='light', $base_color, lighten($base_color, 0%));
+$entry_border: if($variant == 'light', $borders_color, darken($borders_color, 0%));
+
+$button_bg: if($variant == 'light', $header_button_bg, $header_button_bg);
+$button_border: $header_button_border;
