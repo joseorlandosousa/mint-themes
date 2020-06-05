@@ -41,6 +41,7 @@ GtkHTML {
   color: $text_color;
 
   &:active {
+    border-color: selected_borders_color;
     color: $selected_fg_color;
     background-color: $selected_bg_color;
   }
@@ -164,7 +165,7 @@ filechooser {
       &:selected, &:selected:hover, &:active:hover {
         @extend %selected_items;
 
-        .sidebar-icon { color: inherit; }
+        .sidebar-icon { color: inherit; opacity: .5;}
       }
 
       &:not(:selected) button.sidebar-button {
@@ -179,7 +180,7 @@ filechooser {
       &.sidebar-new-bookmark-row {
         color: $selected_bg_color;
 
-        .sidebar-icon { color: inherit; }
+        .sidebar-icon { color: inherit;  opacity: .5;}
       }
 
       &:drop(active):not(:disabled) {

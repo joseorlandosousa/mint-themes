@@ -5,6 +5,7 @@ $bordered: false !default;
 
 // toolbar
 $toolbar-height: 48px;
+$btn-height: 32px;
 
 /*
   Colors
@@ -127,17 +128,18 @@ THEMES CONFIGS
 **/
 
 // Light
-$lm-themme-light: (
-  "base-color":     $white,
-  "bg-color":       map-get($lm-grey, 100),
+$lm-theme-light: (
+  "base_color":     $white,
+  "bg_color":       map-get($lm-grey, 100),
   "toolbar_btn_bg": $white,
   "text_color":     map-get($lm-dark, 500),
-  "border-color":   map-get($lm-grey, 400),
+  "border_color":   map-get($lm-grey, 500),
+  "sidebar_bg":     map-get($lm-grey, 300),
 
   "primary":        map-get($lm-green, 800),
 
   // states
-  "active_bg":      map-get($lm-themme-light, 'primary'),
+  "active_bg":      map-get($lm-green, 800),
   "active_color":   $white,
   "selected_bg":    map-get($lm-dark,  300),
   "selected_color": $white,
@@ -147,17 +149,18 @@ $lm-themme-light: (
 );
 
 // Dark
-$lm-themme-dark: (
-  "base-color":     map-get($lm-dark, 700),
-  "bg-color":       map-get($lm-dark, 500),
+$lm-theme-dark: (
+  "base_color":     map-get($lm-dark, 600),
+  "bg_color":       map-get($lm-dark, 500),
   "toolbar_btn_bg": map-get($lm-dark, 400),
   "text_color":     map-get($lm-grey, 400),
-  "border-color":   map-get($lm-dark, 700),
+  "border_color":   map-get($lm-dark, 600),
+  "sidebar_bg":     map-get($lm-dark, 600),
 
   "primary":        map-get($lm-green, 500),
 
   // states
-  "active_bg":      map-get($lm-themme-dark, 'primary'),
+  "active_bg":      map-get($lm-green, 500),
   "active_color":   map-get($lm-dark, 500),
   "selected_bg":    map-get($lm-dark,  900),
   "selected_color": $white,

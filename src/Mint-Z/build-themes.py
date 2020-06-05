@@ -6,7 +6,8 @@ VARIATIONS = ["Mint-Z",
               "Mint-Z-Darker",
               "Mint-Z-Dark"]
 
-DEST = '../../usr/share/themes'
+#DEST = '../../usr/share/themes'
+DEST = '../../../../../.themes'
 
 curdir = os.getcwd()
 

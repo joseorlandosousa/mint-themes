@@ -609,22 +609,22 @@ toolbar.inline-toolbar toolbutton {
 }
 
 %linked_left {
-  border-top-left-radius: 3px;
-  border-bottom-left-radius: 3px;
+  border-top-left-radius: map-get($lm-radius, "xs");
+  border-bottom-left-radius: map-get($lm-radius, "xs");
   border-top-right-radius: 0;
   border-bottom-right-radius: 0;
 }
 
 %linked_right {
-  border-top-right-radius: 3px;
-  border-bottom-right-radius: 3px;
+  border-top-right-radius: map-get($lm-radius, "xs");
+  border-bottom-right-radius: map-get($lm-radius, "xs");
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
   border-right-style: solid;
 }
 
 %linked_only_child {
-  border-radius: 3px;
+  border-radius:  map-get($lm-radius, "xs");
   border-style: solid;
 }
 
@@ -642,18 +642,18 @@ toolbar.inline-toolbar toolbutton {
 }
 
 %linked_vertical_top {
-  border-top-left-radius: 3px;
-  border-top-right-radius: 3px;
+  border-top-left-radius: map-get($lm-radius, 'sm');
+  border-top-right-radius: map-get($lm-radius, 'sm');
 }
 
 %linked_vertical_bottom {
-  border-bottom-left-radius: 3px;
-  border-bottom-right-radius: 3px;
+  border-bottom-left-radius: map-get($lm-radius, 'sm');
+  border-bottom-right-radius: map-get($lm-radius, 'sm');
   border-bottom-style: solid;
 }
 
 %linked_vertical_only_child {
-  border-radius: 3px;
+  border-radius: map-get($lm-radius, 'sm');
   border-style: solid;
 }
 
@@ -836,7 +836,7 @@ combobox {
 
 toolbar {
   -GtkWidget-window-dragging: true;
-  padding: 4px;
+  padding: map-get($lm-spacing, 'xs');
   background-color: $bg_color;
 
   separator { background: none; }
@@ -879,12 +879,13 @@ toolbar {
 .primary-toolbar toolbar,
 .primary-toolbar:not(.libreoffice-toolbar) {  // LO messes up the toolbar styling, so exclude LO toolbars
   color: $header_fg;
-  background-color: opacify($header_bg, 1);
+  background-color: opacify($header_bg, .5);
   box-shadow: none;
-  border-width: 0 0 1px 0;
-  border-style: solid;
-  border-image: linear-gradient(to bottom, opacify($header_bg, 1),
-                                           darken($header_bg, 12%)) 1 0 1 0; //temporary hack for rhythmbox 3.1
+  border-bottom: 1px solud $borders_color;
+  // border-width: 0 0 1px 0;
+  // border-style: solid;
+  // border-image: linear-gradient(to bottom, opacify($header_bg, 1),
+  //                                          darken($header_bg, 12%)) 1 0 1 0; //temporary hack for rhythmbox 3.1
 
   separator { @extend %header_separator; }
 }
@@ -922,7 +923,7 @@ actionbar {
 //
 headerbar,
 %titlebar {
-  min-height: 42px;
+  min-height: $toolbar-height;
   padding: 0 7px;
 
   border-width: 0 0 1px;
@@ -1184,36 +1185,36 @@ headerbar {
 
   // Linking stuff
 
-  // Disconnect linked buttons
-  .linked:not(.vertical):not(.path-bar):not(.stack-switcher) {
-    button:not(:last-child):not(:only-child) { margin-right: 1px; }
-  }
+  // Disconnect linked buttons //  //? why use linked buttons if you don't want to demonstrate the link?
+  // .linked:not(.vertical):not(.path-bar):not(.stack-switcher) {
+  //   button:not(:last-child):not(:only-child) { margin-right: 1px; }
+  // }
 
-  // Reset buttons
-  .linked:not(.vertical):not(.path-bar) > button {
-    &, &:hover, &:active, &:checked, &:disabled {
-      border-radius: 3px;
-      border-style: solid;
-    }
-  }
-  .linked:not(.vertical):not(.path-bar) {
-    $_uncolored_button: 'button:not(:checked):not(:active):not(.suggested-action):not(.destructive-action)';
+  // // Reset buttons
+  // .linked:not(.vertical):not(.path-bar) > button {
+  //   &, &:hover, &:active, &:checked, &:disabled {
+  //     border-radius: 3px;
+  //     border-style: solid;
+  //   }
+  // }
+  // .linked:not(.vertical):not(.path-bar) {
+  //   $_uncolored_button: 'button:not(:checked):not(:active):not(.suggested-action):not(.destructive-action)';
 
-    > #{$_uncolored_button} + #{$_uncolored_button},
-    > #{$_uncolored_button}:hover:not(:only-child),
-    > #{$_uncolored_button}:hover + #{$_uncolored_button},
-    > #{$_uncolored_button}:disabled:not(:only-child),
-    > #{$_uncolored_button}:disabled + #{$_uncolored_button}:not(:hover) { box-shadow: none; }
-  }
+  //   > #{$_uncolored_button} + #{$_uncolored_button},
+  //   > #{$_uncolored_button}:hover:not(:only-child),
+  //   > #{$_uncolored_button}:hover + #{$_uncolored_button},
+  //   > #{$_uncolored_button}:disabled:not(:only-child),
+  //   > #{$_uncolored_button}:disabled + #{$_uncolored_button}:not(:hover) { box-shadow: none; }
+  // }
 
   // special case for path-bars and stack-switchers
   .linked:not(.vertical):not(.path-bar).stack-switcher,
   .linked:not(.vertical).path-bar {
 
     > button {
-      @include button(header-hover);
+      @include button(header-normal-bordered);
 
-      &:hover { background-color: lighten($header_button_bg, 15%); }
+      &:hover {  @include button(header-hover); }
       &:active, &:checked { @include button(header-active); }
       &:disabled { color: transparentize($header_fg, 0.4); }
 
@@ -1231,9 +1232,9 @@ headerbar {
     }
 
     & + button:last-child {
-      @include button(header-hover);
+      @include button(header-normal-bordered);
 
-        &:hover { background-color: lighten($header_button_bg, 15%); }
+        &:hover { @include button(header-hover); }
         &:active, &:checked { @include button(header-active); }
         &:disabled {
           color: transparentize($header_fg, 0.4);
@@ -2523,13 +2524,38 @@ calendar {
 //
 // Dialogs
 //
-.dialog-action-area .button.text-button {
-  padding: 6px 16px;
+
+.dialog-vbox {
+  .dialog-action-box {
+    padding: map-get($lm-spacing, 'sm');
+  }
+
+  box > image:not(.sidebar-icon) {
+    color: map-get($lm-yellow, 800 );
+  }
+
 }
 
-.message-dialog .dialog-action-area .button {
-  padding: 8px;
-}
+// .dialog-action-area .button.text-button {
+//   padding: map-get($lm-spacing, 'sm');
+// }
+
+// .dialog-vbox .dialog-action-area .text-button,
+// .message-dialog .dialog-action-area .button {
+//   min-height: $btn-height;
+//   padding: 0 8px;
+
+//   &.default {
+//     font-weight: bold
+//   }
+// }
+
+// .dialog-vbox .dialog-action-area .text-button.default {
+//   color: $selected_fg_color;
+//   background-color: $selected_bg_color;
+//   border-color: $selected_bg_color;
+//   font-weight: semibold
+// }
 
 .message-dialog { // Message Dialog styling
   -GtkDialog-button-spacing: 0;
@@ -2543,7 +2569,7 @@ calendar {
       border: none;
     }
     .dialog-action-area .button {
-      padding: 8px;
+      padding: 12px;
       border-radius: 0;
 
       @extend %middle_button;
@@ -2863,18 +2889,20 @@ infobar {
 //
 tooltip,
 .tooltip {
+  
   &.background {
     // background-color needs to be set this way otherwise it gets drawn twice
     // see https://bugzilla.gnome.org/show_bug.cgi?id=736155 for details.
-    background-color: $tooltip_bg_color;
+    background-color: rgba($tooltip_bg_color, .9);
     background-clip: padding-box;
+    border-radius: map-get($lm-radius, 'sm');
 
     label { padding: 4px; }
   }
-
+  
   color: $tooltip_fg_color;
-  border-radius: 2px;
-  border: 1px solid $tooltip_border_color;
+  border: 2px solid $tooltip_border_color;
+  border-radius: map-get($lm-radius, 'sm');
 
   decoration { background-color: transparent; }
 
@@ -2882,7 +2910,14 @@ tooltip,
     background-color: transparent;
     color: $tooltip_fg_color;
   }
+
+  &.csd decoration {
+    border-radius: 6px;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.15);
+  }
 }
+
+
 
 //
 // Color Chooser
@@ -3080,7 +3115,7 @@ decoration {
   }
   .popup & {
     box-shadow: none;
-    border-radius: 0;
+    //border-radius: 0;
   }
   // server-side decorations as used by mutter
   .ssd & {
