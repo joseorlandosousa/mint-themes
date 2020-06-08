@@ -28,8 +28,10 @@ THEMES CONFIGS
   -gtk-outline-radius: 2px; }
 
 .background {
-  color: #e6e6e6;
-  background-color: rgba(46, 46, 46, 0.999); }
+  color: #e6e6e6; }
+
+viewport, messagedialog, scrolledwindow, messagedialog, dialog {
+  background-color: rgba(46, 46, 46, 0.97); }
 
 *:disabled {
   -gtk-icon-effect: dim; }
@@ -63,7 +65,7 @@ textview text {
   .view text:selected:focus,
   iconview text:selected:focus,
   textview text:selected:focus {
-    border-radius: 2px; }
+    border-radius: 3px; }
 
 textview border {
   background-color: #2c2c2c; }
@@ -75,7 +77,7 @@ rubberband, flowbox rubberband, treeview.view rubberband, .content-view rubberba
 
 flowbox flowboxchild {
   padding: 3px;
-  border-radius: 2px; }
+  border-radius: 3px; }
   flowbox flowboxchild:selected {
     outline-offset: -2px; }
 
@@ -509,7 +511,7 @@ button {
   button.font separator, button.file separator {
     background-color: transparent; }
   .inline-toolbar button, .inline-toolbar button:backdrop {
-    border-radius: 2px;
+    border-radius: 3px;
     border-width: 1px; }
 
 .inline-toolbar toolbutton > button {
@@ -641,7 +643,7 @@ modelbutton.flat {
   padding-left: 8px;
   padding-right: 8px;
   outline-offset: -3px;
-  border-radius: 2px; }
+  border-radius: 6px; }
   menuitem.button.flat:hover,
   modelbutton.flat:hover {
     background-color: #404040; }
@@ -1379,7 +1381,7 @@ treeview.view {
       -gtk-icon-source: -gtk-icontheme("pan-down-symbolic"); }
   treeview.view.progressbar, treeview.view.progressbar:focus {
     color: #2e2e2e;
-    border-radius: 2px;
+    border-radius: 3px;
     background-color: #86BE43; }
     treeview.view.progressbar:selected, treeview.view.progressbar:selected:focus, treeview.view.progressbar:focus:selected, treeview.view.progressbar:focus:selected:focus {
       color: #86BE43;
@@ -1388,12 +1390,12 @@ treeview.view {
   treeview.view.trough {
     color: #e6e6e6;
     background-color: #212121;
-    border-radius: 2px;
+    border-radius: 3px;
     border: 1px solid #292929; }
     treeview.view.trough:selected, treeview.view.trough:selected:focus {
       color: #2e2e2e;
       background-color: rgba(0, 0, 0, 0.2);
-      border-radius: 2px;
+      border-radius: 3px;
       border-width: 0; }
   treeview.view header button {
     padding: 3px 6px;
@@ -1425,7 +1427,7 @@ treeview.view {
 menubar,
 .menubar {
   -GtkWidget-window-dragging: true;
-  padding: 0px;
+  padding: 0 6px;
   background-color: #2e2e2e;
   color: #e9e4e4; }
   menubar:backdrop,
@@ -1433,9 +1435,10 @@ menubar,
     color: rgba(233, 228, 228, 0.7); }
   menubar > menuitem,
   .menubar > menuitem {
-    padding: 6px 8px;
+    padding: 6px;
     border: solid transparent;
-    border-width: 0; }
+    border-width: 0;
+    border-radius: 3px; }
     menubar > menuitem:hover,
     .menubar > menuitem:hover {
       background-color: #86BE43;
@@ -1452,13 +1455,15 @@ menu,
 .menu {
   margin: 4px;
   padding: 0;
-  border-radius: 0;
-  background-color: #2e2e2e;
-  border: 1px solid #292929; }
+  border-radius: 6px;
+  background-color: rgba(46, 46, 46, 0.95);
+  border: 0 solid #292929;
+  outline: none;
+  box-shadow: none; }
   .csd menu, .csd
   .menu {
-    padding: 4px 0px;
-    border-radius: 2px;
+    padding: 6px;
+    border-radius: 6px;
     border: none; }
   menu separator,
   .csd menu separator,
@@ -1477,7 +1482,9 @@ menu,
   .menu menuitem {
     min-height: 16px;
     min-width: 40px;
-    padding: 5px; }
+    margin: 0 3px;
+    padding: 6px 12px;
+    border-radius: 3px; }
     menu menuitem:hover,
     .menu menuitem:hover {
       color: #2e2e2e;
@@ -1538,14 +1545,14 @@ menu,
       border-color: transparent; }
 
 .csd .popup {
-  border-radius: 2px; }
+  border-radius: 5px; }
 
 popover,
 popover.background {
   padding: 2px;
-  border-radius: 3px;
+  border-radius: 5px;
   background-clip: border-box;
-  background-color: #2e2e2e;
+  background-color: rgba(46, 46, 46, 0.96);
   box-shadow: 0 2px 6px 1px rgba(0, 0, 0, 0.35); }
   .csd popover, popover, .csd
   popover.background,
@@ -1604,7 +1611,6 @@ notebook {
     background-color: #292929; }
   notebook > header {
     padding: 2px;
-    background-color: #2e2e2e;
     /* button in headers */ }
     notebook > header.top {
       box-shadow: inset 0 -1px #292929; }
@@ -2228,7 +2234,7 @@ progressbar {
       background-color: #2e2e2e; }
   progressbar trough {
     border: 1px solid #292929;
-    border-radius: 2px;
+    border-radius: 3px;
     background-color: #212121; }
     row:selected progressbar trough,
     infobar progressbar trough {
@@ -2263,7 +2269,7 @@ levelbar.vertical.discrete block {
 levelbar block:not(.empty) {
   border: 1px solid #86BE43;
   background-color: #86BE43;
-  border-radius: 2px; }
+  border-radius: 3px; }
 
 levelbar block.low {
   border-color: #ffae00;
@@ -2874,10 +2880,10 @@ decoration {
     .ssd decoration.maximized {
       border-radius: 0; }
   .csd.popup decoration {
-    border-radius: 2px;
+    border-radius: 6px;
     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.45), 0 0 0 1px #151515; }
   tooltip.csd decoration {
-    border-radius: 2px;
+    border-radius: 3px;
     box-shadow: 0 1px 3px 1px rgba(0, 0, 0, 0.55); }
   message-dialog.csd decoration {
     border-radius: 3px; }
@@ -3064,7 +3070,8 @@ SushiFontWidget {
 vte-terminal.terminal-screen {
   -TerminalScreen-background-darkness: 0.97;
   background-color: #2e2e2e;
-  color: #fff; }
+  color: #fff;
+  padding: 12px; }
 
 .terminal-screen {
   padding: 12px; }
@@ -3093,7 +3100,7 @@ vte-terminal {
   color: #fff; }
 
 .nautilus-canvas-item {
-  border-radius: 2px; }
+  border-radius: 6px; }
 
 .nemo-desktop.nemo-canvas-item,
 .nautilus-desktop.nautilus-canvas-item {
@@ -3207,8 +3214,8 @@ NautilusQueryEditor .search-bar.toolbar {
   border-style: solid;
   border-width: 1px; }
   .disk-space-display.unknown {
-    background-color: rgba(230, 230, 230, 0.5);
-    border-color: rgba(205, 205, 205, 0.5); }
+    background-color: rgba(230, 230, 230, 0.2);
+    border-color: rgba(205, 205, 205, 0.2); }
   .disk-space-display.used {
     background-color: rgba(134, 190, 67, 0.8);
     border-color: rgba(107, 153, 53, 0.8); }
@@ -3233,7 +3240,7 @@ NautilusListView .view, NautilusListView iconview {
   .nemo-window .nemo-inactive-pane .view, .nemo-window .nemo-inactive-pane iconview {
     background-color: #1c1c1c; }
   .nemo-window .places-treeview {
-    -NemoPlacesTreeView-disk-full-bg-color: #e6e6e6;
+    -NemoPlacesTreeView-disk-full-bg-color: #1c1c1c;
     -NemoPlacesTreeView-disk-full-fg-color: #6b9935;
     -GtkTreeView-vertical-separator: 7; }
     .nemo-window .places-treeview .view.cell:hover, .nemo-window .places-treeview iconview.cell:hover {
@@ -3241,8 +3248,9 @@ NautilusListView .view, NautilusListView iconview {
   .nemo-window .nemo-places-sidebar.frame {
     border-width: 0; }
   .nemo-window .sidebar {
-    padding: 6px 0;
-    color: #e6e6e6; }
+    padding: 0;
+    color: #e6e6e6;
+    background-color: #292929; }
     .nemo-window .sidebar .frame {
       border: none; }
     .nemo-window .sidebar image {
@@ -3535,11 +3543,11 @@ button.documents-load-more {
 .documents-icon-bg {
   background-color: #86BE43;
   color: #2e2e2e;
-  border-radius: 2px; }
+  border-radius: 3px; }
 
 .documents-collection-icon, .photos-collection-icon {
   background-color: rgba(230, 230, 230, 0.3);
-  border-radius: 2px; }
+  border-radius: 3px; }
 
 .documents-favorite.button:active,
 .documents-favorite.button:active:hover {
@@ -3548,7 +3556,7 @@ button.documents-load-more {
 .documents-entry-tag, .photos-entry-tag {
   background-color: #86BE43;
   color: #2e2e2e;
-  border-radius: 2px;
+  border-radius: 3px;
   border-width: 0;
   margin: 2px;
   padding: 4px; }
@@ -3900,7 +3908,7 @@ filechooser placessidebar.sidebar list scrollbar, .nemo-window .sidebar scrollba
 
 #user_image {
   padding: 3px;
-  border-radius: 2px; }
+  border-radius: 3px; }
 
 #shutdown_button.button {
   background-clip: border-box;

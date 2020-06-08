@@ -80,7 +80,7 @@
 // the user's avatar box
 #user_image {
   padding: 3px;
-  border-radius: 2px;
+  border-radius: map-get($lm-radius, 'xs');
 }
 
 // the border around the user's avatar box

@@ -230,16 +230,16 @@ StScrollBar {
 .menu {
   color: #e6e6e6;
   border: 1px solid #292929;
-  border-radius: 3px;
-  background-color: rgba(46, 46, 46, 0.99); }
+  border-radius: 6px;
+  background-color: rgba(46, 46, 46, 0.98); }
   .menu.top {
-    border-radius: 0 0 3px 3px; }
+    border-radius: 0 0 6px 6px; }
   .menu.bottom {
-    border-radius: 3px 3px 0 0; }
+    border-radius: 6px 6px 0 0; }
   .menu.left {
-    border-radius: 0 3px 3px 0; }
+    border-radius: 0 6px 6px 0; }
   .menu.right {
-    border-radius: 3px 0 0 3px; }
+    border-radius: 6px 0 0 6px; }
 
 .popup-sub-menu {
   background-color: #292929;

@@ -71,6 +71,7 @@ vte-terminal.terminal-screen {
   -TerminalScreen-background-darkness: 0.97;
   background-color: map-get($lm-theme-dark, 'bg_color');
   color: #fff;
+  padding: map-get($lm-spacing, 'md');
 
 }
 
@@ -118,7 +119,7 @@ vte-terminal {
 // Nautilus
 //
 .nautilus-canvas-item {
-  border-radius: 2px;
+  border-radius: map-get($lm-radius, 'sm');
 }
 
 %nautilus_canvas_item,
@@ -218,7 +219,7 @@ NautilusQueryEditor .search-bar.toolbar {
   padding: 8px;
 }
 
-$disk_space_unknown: transparentize($fg_color, 0.5);
+$disk_space_unknown: transparentize($fg_color, 0.8);
 $disk_space_used: transparentize($selected_bg_color, 0.2);
 $disk_space_free: darken($bg_color, 3%);
 
@@ -266,7 +267,7 @@ NautilusListView .view { border-bottom: 1px solid $borders_color; }
   }
 
   .places-treeview {
-    -NemoPlacesTreeView-disk-full-bg-color: $dark_sidebar_fg;
+    -NemoPlacesTreeView-disk-full-bg-color: darken($dark_sidebar_bg, 5%);
     -NemoPlacesTreeView-disk-full-fg-color: darken($selected_bg_color, 10%);
     -GtkTreeView-vertical-separator: 7;
 
@@ -276,8 +277,9 @@ NautilusListView .view { border-bottom: 1px solid $borders_color; }
   .nemo-places-sidebar.frame { border-width: 0; }
 
   .sidebar {
-    padding: map-get($lm-spacing, 'sm') 0;
+    padding: 0;
     color: $dark_sidebar_fg;
+    background-color: $dark_sidebar_bg;
 
     .frame { border: none; }
 
@@ -666,12 +668,12 @@ button.documents-load-more {
 .documents-icon-bg {
   background-color: $selected_bg_color;
   color: $selected_fg_color;
-  border-radius: 2px;
+  border-radius: map-get($lm-radius, 'xs');
 }
 
 .documents-collection-icon {
   background-color: transparentize($fg_color, 0.7);
-  border-radius: 2px;
+  border-radius: map-get($lm-radius, 'xs');
 }
 
 .documents-favorite.button:active,
@@ -682,7 +684,7 @@ button.documents-load-more {
 .documents-entry-tag {
   background-color: $selected_bg_color;
   color: $selected_fg_color;
-  border-radius: 2px;
+  border-radius: map-get($lm-radius, 'xs');
   border-width: 0;
   margin: 2px;
   padding: 4px;

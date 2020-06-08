@@ -45,7 +45,7 @@ $header_bg: red;
 
 $header_bg_backdrop: if($darker == 'true' or $variant == 'dark', lighten($header_bg, 1.5%), lighten($header_bg, 3%));
 
-$header_border: if($variant == 'light' and $darker== 'false', $bg_color, $borders_color);
+$header_border: if($variant == 'light' and $darker== 'false', $borders_color, $borders_color);
 $header_highlight: if($variant == 'light' and $darker == 'false', #EEEEEE, #373737);
 
 $header_fg: if($variant == 'light', $text_color, saturate(transparentize($fg_color, 0.0), 10%));

@@ -35,7 +35,10 @@ $darker_asset_suffix: if($darker=='true', '-dark', $asset_suffix);
 //
 .background {
   color: $fg_color;
-  background-color: transparentize($bg_color, 0.001);
+  //background-color: transparentize($bg_color, 0.001);
+}
+viewport, messagedialog, scrolledwindow, messagedialog, dialog {
+  background-color: rgba($bg_color, .97);
 }
 
 *:disabled { -gtk-icon-effect: dim; }
@@ -69,7 +72,7 @@ $darker_asset_suffix: if($darker=='true', '-dark', $asset_suffix);
   &:selected {
     &, &:focus {
       @extend %selected_items;
-      border-radius: 2px;
+      border-radius: map-get($lm-radius, 'xs');
     }
   }
 }
@@ -98,7 +101,7 @@ flowbox {
 
   flowboxchild {
     padding: 3px;
-    border-radius: 2px;
+    border-radius: map-get($lm-radius, 'xs');
 
     &:selected {
       @extend %selected_items;
@@ -562,7 +565,7 @@ button {
 
   //inline-toolbar buttons
   .inline-toolbar &, .inline-toolbar &:backdrop {
-    border-radius: 2px;
+    border-radius: map-get($lm-radius, 'xs');
     border-width: 1px;
     @extend %linked;
   }
@@ -680,7 +683,8 @@ modelbutton.flat {
   padding-left: 8px;
   padding-right: 8px;
   outline-offset: -3px;
-  border-radius: 2px;
+  border-radius: map-get($lm-radius, 'sm');
+
 
   @extend %undecorated_button;
 
@@ -1490,7 +1494,7 @@ treeview.view {
 
   &.progressbar, &.progressbar:focus { // progress bar in treeviews
     color: $selected_fg_color;
-    border-radius: 2px;
+    border-radius: map-get($lm-radius, 'xs');
     background-color: $selected_bg_color;
 
     &:selected, &:selected:focus {
@@ -1502,13 +1506,13 @@ treeview.view {
   &.trough { // progress bar trough in treeviews
     color: $fg_color;
     background-color: $trough_color_treeview;
-    border-radius: 2px;
+    border-radius: map-get($lm-radius, 'xs');
     border: 1px solid $button_border;
 
     &:selected, &:selected:focus {
       color: $selected_fg_color;
       background-color: transparentize(black, 0.8);
-      border-radius: 2px;
+      border-radius: map-get($lm-radius, 'xs');
       border-width: 0;
     }
   }
@@ -1557,8 +1561,8 @@ treeview.view {
 menubar,
 .menubar {
   -GtkWidget-window-dragging: true;
-  padding: 0px;
-  background-color: opacify($header_bg, 1);
+  padding: 0 map-get($lm-spacing, 'sm');
+  background-color: $header_bg;
   color: $header_fg;
 
   &:backdrop {
@@ -1567,9 +1571,10 @@ menubar,
   }
 
   > menuitem {
-    padding: 6px 8px;
+    padding: map-get($lm-spacing, 'sm') ;
     border: solid transparent;
     border-width: 0;
+    border-radius: map-get($lm-radius, 'xs');
 
     &:hover { //Seems like it :hover even with keyboard focus
       background-color: $selected_bg_color;
@@ -1588,14 +1593,16 @@ menu,
 .menu {
   $_menu_bg: if($variant=='light', $base_color, $bg_color);
   margin: 4px;
-  padding: 0;
-  border-radius: 0;
-  background-color: $_menu_bg;
-  border: 1px solid $borders_color;
+  padding: 0;//map-get($lm-spacing, 'md') map-get($lm-spacing, 'sm');
+  border-radius: map-get($lm-radius, 'sm');
+  background-color: rgba($_menu_bg, .95);
+  border: 0 solid $borders_color;
+  outline: none;
+  box-shadow: none;
 
   .csd & {
-    padding: 4px 0px;
-    border-radius: 2px;
+    padding: map-get($lm-spacing, 'sm');
+    border-radius: map-get($lm-radius, 'sm');
     border: none;
   }
 
@@ -1613,7 +1620,9 @@ menu,
   menuitem {
     min-height: 16px;
     min-width: 40px;
-    padding: 5px;
+    margin: 0 map-get($lm-spacing, 'xs');
+    padding: map-get($lm-spacing, 'sm') map-get($lm-spacing, 'md');
+    border-radius: map-get($lm-radius, 'xs');
 
     &:hover {
       color: $selected_fg_color;
@@ -1622,6 +1631,12 @@ menu,
     &:disabled {
       color: $insensitive_fg_color;
     }
+
+    // Identify only contextmenu images
+    // image {
+    //   opacity: .5;
+    //   margin-right: map-get($lm-spacing, 'sm');
+    // }
 
     //submenu indicators
     arrow {
@@ -1677,7 +1692,7 @@ menu,
   }
 }
 
-.csd .popup { border-radius: 2px; }
+.csd .popup { border-radius: 5px; }
 
 //
 // Popovers
@@ -1687,9 +1702,9 @@ popover.background {
   $_popover_bg: if($variant=='light', $base_color, $bg_color);
   padding: 2px;
   // border: 1px solid darken($borders_color, 5%);
-  border-radius: 3px;
+  border-radius: 5px;
   background-clip: border-box;
-  background-color: $_popover_bg;
+  background-color: rgba($_popover_bg, .96);
 
   box-shadow: 0 2px 6px 1px if($variant=='light', transparentize(black, 0.93), transparentize(black, 0.65));
 
@@ -1755,7 +1770,7 @@ notebook {
 
   > header {
     padding: 2px;
-    background-color: $bg_color;
+    //background-color: $bg_color;
 
     &.top {    box-shadow: inset  0  -1px $borders_color; }
     &.bottom { box-shadow: inset  0   1px $borders_color; }
@@ -2297,7 +2312,7 @@ progressbar {
   // Trough
   trough {
     border: 1px solid $button_border;
-    border-radius: 2px;
+    border-radius: map-get($lm-radius, 'xs');
     background-color: $trough_color;
 
     row:selected &,
@@ -2337,7 +2352,7 @@ levelbar {
   block:not(.empty) {
     border: 1px solid $selected_bg_color;
     background-color: $selected_bg_color;
-    border-radius: 2px;
+    border-radius: map-get($lm-radius, 'xs');
   }
   block.low {
     border-color: $warning_color;
@@ -2372,6 +2387,7 @@ frame > border.flat,
 }
 
 scrolledwindow {
+  
   viewport.frame { // avoid double borders when viewport inside scrolled window
     border-style: none;
   }
@@ -3138,12 +3154,12 @@ decoration {
     &.maximized { border-radius: 0; }
   }
   .csd.popup & {
-    border-radius: 2px;
+    border-radius: map-get($lm-radius, 'sm');
     box-shadow: 0 3px 6px if($variant == 'light', $_wm_border, transparentize($_wm_border, 0.1)),
                   0 0 0 1px if($variant == 'light', $_wm_border, darken($bg_color, 10%));
   }
   tooltip.csd & {
-    border-radius: 2px;
+    border-radius: map-get($lm-radius, 'xs');
     box-shadow: 0 1px 3px 1px $_wm_border;
   }
   message-dialog.csd & { border-radius: 3px; }
