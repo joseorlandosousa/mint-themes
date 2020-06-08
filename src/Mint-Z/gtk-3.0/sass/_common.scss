@@ -40,6 +40,10 @@ $darker_asset_suffix: if($darker=='true', '-dark', $asset_suffix);
 viewport, messagedialog, scrolledwindow, messagedialog, dialog {
   background-color: rgba($bg_color, .97);
 }
+messagedialog, dialog, window > box {
+  background-color: transparent;
+  background-image: linear-gradient(to bottom, $bg_color 1%, rgba($bg_color, .97) 80%);
+}
 
 *:disabled { -gtk-icon-effect: dim; }
 
@@ -688,7 +692,7 @@ modelbutton.flat {
 
   @extend %undecorated_button;
 
-  &:hover { background-color: if($variant=='light', mix($fg_color,$bg_color,5%), mix($fg_color,$bg_color,10%)); }
+  &:hover { @extend %active_items; }
   &:active, &:selected { &, arrow { @extend %selected_items; } }
   &:checked { color: $fg_color; }
 
@@ -1577,8 +1581,8 @@ menubar,
     border-radius: map-get($lm-radius, 'xs');
 
     &:hover { //Seems like it :hover even with keyboard focus
-      background-color: $selected_bg_color;
-      color: $selected_fg_color;
+      background-color: $active_bg_color;
+      color: $active_fg_color;
     }
     &:disabled {
       color: transparentize($header_fg, 0.6);
@@ -1625,8 +1629,8 @@ menu,
     border-radius: map-get($lm-radius, 'xs');
 
     &:hover {
-      color: $selected_fg_color;
-      background-color: $selected_bg_color;
+      color: $active_fg_color;
+      background-color: $active_bg_color;
     }
     &:disabled {
       color: $insensitive_fg_color;
@@ -3237,5 +3241,17 @@ headerbar,
 
     @at-root %selected_items_disabled,
     &:disabled { color: mix($selected_fg_color, $selected_bg_color, 50%); }
+  }
+}
+
+// catch all extend
+%active_items {
+  background-color: $active_bg_color;
+  
+  @at-root %nobg_selected_items, & {
+    color: $active_fg_color;
+
+    @at-root %selected_items_disabled,
+    &:disabled { color: mix($active_fg_color, $active_bg_color, 50%); }
   }
 }

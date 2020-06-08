@@ -169,7 +169,7 @@ filechooser {
 
       &:selected.has-open-popup,
       &:selected, &:selected:hover, &:active:hover {
-        @extend %selected_items;
+        @extend %active_items;
 
         .sidebar-icon { color: inherit; opacity: .5;}
       }
@@ -257,7 +257,7 @@ NautilusListView .view { border-bottom: 1px solid $borders_color; }
 
     @include entry(focus);
 
-    &:selected { &:focus, & { @extend %selected_items; }}
+    &:selected { &:focus, & { @extend %active_items; }}
   }
 
   .nemo-inactive-pane .view {
