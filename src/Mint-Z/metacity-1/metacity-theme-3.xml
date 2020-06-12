@@ -23,9 +23,9 @@
 <!-- window button colors -->
 
 <!-- close -->
-<constant name="C_button_close_bg_focused" value="gtk:custom(selected_bg_color,#92b372)" />
-<constant name="C_button_close_bg_hover" value="shade/gtk:custom(selected_bg_color,#92b372)/1.14" />
-<constant name="C_button_close_bg_active" value="shade/gtk:custom(selected_bg_color,#92b372)/0.8" />
+<constant name="C_button_close_bg_focused" value="gtk:custom(selected_bg_color,#69A72C)" />
+<constant name="C_button_close_bg_hover" value="shade/gtk:custom(selected_bg_color,#69A72C)/1.14" />
+<constant name="C_button_close_bg_active" value="shade/gtk:custom(selected_bg_color,#69A72C)/0.8" />
 
 <constant name="C_icon_close_bg" value="#F8F8F8" />
 
@@ -42,7 +42,7 @@
 
 <!-- geometries -->
 
-<frame_geometry name="normal" title_scale="medium" rounded_top_left="1" rounded_top_right="1">
+<frame_geometry name="normal" title_scale="medium" rounded_top_left="5" rounded_top_right="5" rounded_bottom_left="5" rounded_bottom_right="5">
 	<distance name="left_width" value="0" />
 	<distance name="right_width" value="0" />
 	<distance name="bottom_height" value="0" />

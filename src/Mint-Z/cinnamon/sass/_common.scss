@@ -374,9 +374,9 @@ StScrollBar {
 
 /*Don't know what this does*/
 .popup-combo-menu {
-  background-color: rgba(0,0,0,0.4);
+  background-color: rgba(map-get($lm-dark, 500),0.9);
   padding: 1em 0em;
-  color: red;
+  color: map-get($lm-theme-dark, 'text_color');
   border: 1px solid rgba(0,0,0,0.6);
   border-radius: 3px;
 }
@@ -832,7 +832,7 @@ StScrollBar {
 //
 #notification {
   border: 1px solid $borders_color;
-  border-radius: 3px;
+  border-radius: map-get($lm-radius, 'sm');
   background-color: $bg_color;
   padding: 13px;
   spacing-rows: 10px;

@@ -185,7 +185,7 @@ $lm-theme-dark: (
 $min-contrast-ratio:   3 !default;
 
 // Customize the light and dark text colors for use in our color contrast function.
-$color-contrast-dark:      map-get($lm-dark, 500) !default;
+$color-contrast-dark:      map-get($lm-dark, 700) !default;
 $color-contrast-light:     $white !default;
 // Color contrast
 $yiq-contrasted-threshold:  180 !default;

@@ -40,7 +40,7 @@ $darker_asset_suffix: if($darker=='true', '-dark', $asset_suffix);
 viewport, messagedialog, scrolledwindow, messagedialog, dialog {
   background-color: rgba($bg_color, .97);
 }
-messagedialog, dialog, window > box {
+messagedialog, dialog, window > box, iconview  {
   background-color: transparent;
   background-image: linear-gradient(to bottom, $bg_color 1%, rgba($bg_color, .97) 80%);
 }
@@ -891,7 +891,7 @@ toolbar {
   color: $header_fg;
   //background-color: opacify($header_bg, .5);
   box-shadow: none;
-  border-bottom: 1px solid $header_border;
+  //border-bottom: 1px solid $header_border;
   // border-width: 0 0 1px 0;
   // border-style: solid;
   // border-image: linear-gradient(to bottom, opacify($header_bg, 1),
@@ -2866,9 +2866,18 @@ infobar {
     }
   }
 
-  &.warning { background-color: $warning_color; }
-  &.error { background-color: $destructive_color; }
-  &.question { background-color: $question_color; }
+  &.warning { 
+    background-color: $warning_color; 
+    color: color-contrast($warning_color);
+  }
+  &.error { 
+    background-color: $destructive_color; 
+    color: color-contrast($destructive_color);
+  }
+  &.question { 
+    background-color: $question_color; 
+    color: color-contrast($question_color)
+  }
 }
 
 //
@@ -3124,7 +3133,7 @@ button.circular-button,
 // Window Decorations
 //
 decoration {
-  border-radius: if($darker=='false' and $variant=='light', 4px 4px 0 0, 3px 3px 0 0);
+  border-radius: map-get($lm-radius, 'sm');
   border-width: 0px;
 
   $_wm_border: if($variant=='light', transparentize(black, 0.85), transparentize(black, 0.45));
