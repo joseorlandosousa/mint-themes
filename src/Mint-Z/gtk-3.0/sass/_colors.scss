@@ -57,7 +57,7 @@ $dark_sidebar_bg: if($variant == 'light', map-get($lm-theme-light, 'sidebar_bg')
 $dark_sidebar_fg: $text_color;
 $dark_sidebar_border: if($variant == 'light', $dark_sidebar_bg, $dark_sidebar_bg);
 
-$filechooser_bg: if($variant == 'dark', #2f2f2f, #d9d9d9);
+$filechooser_bg: if($variant == 'dark', #2f2f2f, #F0F0F0);
 
 // tooltip
 $tooltip_bg_color:  map-get($lm-theme-dark, 'bg_color');
@@ -92,7 +92,7 @@ $header_button_border: if($darker == 'true' or $variant == 'dark', map-get($lm-t
 $button_bg: if($variant == 'light', $header_button_bg, $header_button_bg);
 $button_border: $header_button_border;
 
-$trough_color_treeview: if($variant == 'light', #d9d9d9, darken($bg_color, 5%));
+$trough_color_treeview: if($variant == 'light', #F0F0F0, darken($bg_color, 5%));
 $trough_color: if($variant == 'light', #ffffff, darken($bg_color, 5%));
 
 // WM Colors

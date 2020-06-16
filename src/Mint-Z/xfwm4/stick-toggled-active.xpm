@@ -3,7 +3,7 @@ static char *stick_toggled_active[] = {
 /* columns rows colors chars-per-pixel */
 "24 24 24 1",
 ". c #EEEEEE",
-"  c #D9D9D9",
+"  c #F0F0F0",
 "@ c #CDCDCD",
 "# c #A3A3A3",
 "$ c #D3D3D3",
